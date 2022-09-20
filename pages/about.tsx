@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import {MainLayout} from "../components/layout";
 
 const Header = dynamic(() => import("../components/common/header"), { ssr: false});
 
@@ -40,7 +41,7 @@ export default function AboutPage(props: AboutPageProps) {
   }
 
   return (
-    <div>
+    <MainLayout>
       <h1>About page</h1>
       
       <Header />
@@ -52,7 +53,7 @@ export default function AboutPage(props: AboutPageProps) {
       </ul>
 
       <button onClick={handleNextClick}>Next page</button>
-    </div>
+    </MainLayout>
   );
 }
 
