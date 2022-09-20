@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPropsContext } from "next";
+import Link from "next/link";
 import { title } from "process";
 import React from "react";
 
@@ -12,7 +13,11 @@ export default function PostListPage({ posts }: PostListPageProps) {
       <h1>Post list page</h1>;
       <ul>
         {posts.map((post) => (
-          <li key={post.id}>{post.title}</li>
+          <li key={post.id}>
+            <Link href={`/posts/${post.id}`}>
+              <a>{post.title}</a>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>
@@ -31,7 +36,7 @@ export const getStaticProps: GetStaticProps<PostListPageProps> = async (
 
   return {
     props: {
-      posts: data.data.map((x: any)=> ({id: x.id, title: x.title})),
+      posts: data.data.map((x: any) => ({ id: x.id, title: x.title })),
     },
   };
 };
