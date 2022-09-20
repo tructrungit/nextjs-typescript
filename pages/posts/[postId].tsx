@@ -29,7 +29,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: data.data.map((post: any) => ({params : {  postId: post.id}})),
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -50,5 +50,6 @@ export const getStaticProps: GetStaticProps<PostDetailPageProps> = async (
     props: {
       post: data,
     },
+    revalidate: 5
   };
 };
