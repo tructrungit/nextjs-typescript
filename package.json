@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@types/http-proxy": "^1.17.9",
+    "cookies": "^0.8.0",
     "http-proxy": "^1.18.1",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@types/cookies": "^0.7.7",
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",
     "@types/react-dom": "18.0.6",

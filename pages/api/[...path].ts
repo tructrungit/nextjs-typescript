@@ -1,10 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import httpProxy from "http-proxy";
-
-// type Data = {
-//   name: string;
-// };
+import Cookies from "cookies";
 
 export const config = {
   api: {
@@ -18,16 +15,25 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  // don't send cookies to API Server
-  req.headers.cookie = "";
+  return new Promise((resolve) => {
+    // convert cookies to header authorization
+    const cookies = new Cookies(req, res)
+    const access_token = cookies.get('access_token')
+    if (access_token) {
+      req.headers.Authorization = `Bearer ${access_token}`
+    }
 
-  console.log(process.env.API_URL);
+    // don't send cookies to API Server
+    req.headers.cookie = "";
 
-  proxy.web(req, res, {
-    target: process.env.API_URL,
-    changeOrigin: true,
-    selfHandleResponse: false,
+    proxy.web(req, res, {
+      target: process.env.API_URL,
+      changeOrigin: true,
+      selfHandleResponse: false,
+    });
+
+    proxy.once("proxyRes", () => {
+      resolve(true);
+    });
   });
-
-  // res.status(200).json({ name: "Match all here" });
 }
