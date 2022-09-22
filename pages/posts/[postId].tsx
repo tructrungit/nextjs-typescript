@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 
 export interface PostDetailPageProps {
-  post: any
+  post: any;
 }
 
 export default function PostDetailPage({ post }: PostDetailPageProps) {
@@ -15,7 +15,7 @@ export default function PostDetailPage({ post }: PostDetailPageProps) {
     <div>
       <h1>Post Detail Page</h1>
       <p>{post.title}</p>
-      <p>{post.author}</p>
+      <p>{post.rating}</p>
       <p>{post.description}</p>
     </div>
   );
@@ -23,12 +23,14 @@ export default function PostDetailPage({ post }: PostDetailPageProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(
-    "https://js-post-api.herokuapp.com/api/posts?_page=1"
+    "https://django-staging.beautytap.com/api/pages/?type=product.ProductPage&fields=_,title,id&limit=5&offset=0"
   );
-  const data = await response.json()
+  const data = await response.json();
 
   return {
-    paths: data.data.map((post: any) => ({params : {  postId: post.id}})),
+    paths: data.items.map((post: any) => ({
+      params: { postId: post.id.toString() },
+    })),
     fallback: true,
   };
 };
@@ -36,13 +38,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<PostDetailPageProps> = async (
   context: GetStaticPropsContext
 ) => {
-  console.log('\nGET STATIC PROPS', context.params?.postId )
-  const postId = context.params?.postId
-  if (!postId) return {notFound: true}
+  console.log("\nGET STATIC PROPS", context.params?.postId);
+  const postId = context.params?.postId;
+  if (!postId) return { notFound: true };
   // server-side
   // build-time
   const response = await fetch(
-    `https://js-post-api.herokuapp.com/api/posts/${postId}`
+    `https://django-staging.beautytap.com/api/pages/${postId}`
   );
   const data = await response.json();
 
@@ -50,6 +52,6 @@ export const getStaticProps: GetStaticProps<PostDetailPageProps> = async (
     props: {
       post: data,
     },
-    revalidate: 5
+    revalidate: 5,
   };
 };

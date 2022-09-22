@@ -30,13 +30,13 @@ export const getStaticProps: GetStaticProps<PostListPageProps> = async (
   // server-side
   // build-time
   const response = await fetch(
-    "https://js-post-api.herokuapp.com/api/posts?_page=1"
+    "https://django-staging.beautytap.com/api/pages/?type=product.ProductPage&fields=_,title,id&limit=5&offset=0"
   );
   const data = await response.json();
 
   return {
     props: {
-      posts: data.data.map((x: any) => ({ id: x.id, title: x.title })),
+      posts: data.items.map((x: any) => ({ id: x.id, title: x.title })),
     },
   };
 };
