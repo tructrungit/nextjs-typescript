@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { MainLayout } from "../components/layout";
+import {AdminLayout, MainLayout} from "../components/layout";
 
 const Header = dynamic(() => import("../components/common/header"), {
   ssr: false,
@@ -16,8 +16,6 @@ export default function AboutPage({ posts }: AboutPageProps) {
   const router = useRouter();
   const page = router.query?.page;
   const limit: number = 5;
-
-  console.log("About query: ", router);
 
   useEffect(() => {
     if (!page) return;
@@ -49,7 +47,7 @@ export default function AboutPage({ posts }: AboutPageProps) {
   }
 
   return (
-    <MainLayout>
+    <AdminLayout>
       <h1>About page</h1>
 
       <Header />
@@ -61,7 +59,7 @@ export default function AboutPage({ posts }: AboutPageProps) {
       </ul>
 
       <button onClick={handleNextClick}>Next page</button>
-    </MainLayout>
+    </AdminLayout>
   );
 }
 

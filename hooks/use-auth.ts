@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { PublicConfiguration } from "swr/dist/types";
 import { authApi } from "../api-client";
-import { deleteCookie, setCookie } from "cookies-next";
+import {deleteCookie, getCookie, setCookie} from "cookies-next";
 
 export function useAuth(option?: Partial<PublicConfiguration>) {
   const {
@@ -13,6 +13,8 @@ export function useAuth(option?: Partial<PublicConfiguration>) {
     revalidateOnFocus: false,
     ...option,
   });
+
+  const firstLoading = profile === undefined && error === undefined
 
   async function login() {
     let user = await authApi.login({
@@ -36,5 +38,6 @@ export function useAuth(option?: Partial<PublicConfiguration>) {
     error,
     login,
     logout,
+    firstLoading
   };
 }
