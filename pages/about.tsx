@@ -1,7 +1,8 @@
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import {AdminLayout, MainLayout} from "../components/layout";
+import { AdminLayout, MainLayout } from "../components/layout";
+import {Box, Typography} from "@mui/material";
 
 const Header = dynamic(() => import("../components/common/header"), {
   ssr: false,
@@ -48,17 +49,21 @@ export default function AboutPage({ posts }: AboutPageProps) {
 
   return (
     <AdminLayout>
-      <h1>About page</h1>
+      <Box>
+        <Typography component="h1" variant="h3" color="primary.main">
+          About page
+        </Typography>
 
-      <Header />
+        <Header />
 
-      <ul className="post-list">
-        {postList.map((post: any) => (
-          <li key={post.id}>{post.title}</li>
-        ))}
-      </ul>
+        <ul className="post-list">
+          {postList.map((post: any) => (
+            <li key={post.id}>{post.title}</li>
+          ))}
+        </ul>
 
-      <button onClick={handleNextClick}>Next page</button>
+        <button onClick={handleNextClick}>Next page</button>
+      </Box>
     </AdminLayout>
   );
 }
