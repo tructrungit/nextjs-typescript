@@ -1,12 +1,16 @@
 import { Box } from "@mui/system";
-import { useRouter } from "next/router";
+import { HeroSection } from "../components/home/hero";
 import { MainLayout } from "../components/layout";
 import { NextPageWithLayout } from "../models";
 
 const Home: NextPageWithLayout = () => {
-  return <Box>Home page</Box>;
+  return (
+    <Box>
+      <HeroSection />
+    </Box>
+  );
 };
 
-Home.Layout = MainLayout
+Home.Layout = MainLayout;
 
 export default Home;
