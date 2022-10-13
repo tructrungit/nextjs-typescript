@@ -33,6 +33,20 @@ export const theme = createTheme({
       defaultProps: {
         maxWidth: 'md'
       },
+    },
+    MuiLink: {
+      defaultProps: {
+        underline: 'hover'
+      },
+      styleOverrides: {
+        root: {
+          color: 'black',
+
+          '&:hover': {
+            color: '#FF6464'
+          }
+        }
+      }
     }
   }
 });
