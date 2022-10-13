@@ -3,6 +3,12 @@ import { red } from "@mui/material/colors";
 
 // Create a theme instance.
 export const theme = createTheme({
+  typography: {
+    fontFamily: [
+      'Heebo',
+      'sans-serif',
+    ].join(','),
+  },
   palette: {
     primary: {
       main: "#FF6464",
