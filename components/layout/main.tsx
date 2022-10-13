@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Stack, Container } from "@mui/material";
 import { Box } from "@mui/system";
 import Link from "next/link";
 import { LayoutProps } from "../../models/index";
@@ -8,7 +8,6 @@ import Header from "../common/header";
 export interface IMainLayoutProps {}
 
 export function MainLayout({ children }: LayoutProps) {
-
   return (
     <Stack minHeight="100vh">
       <Header />
@@ -24,7 +23,15 @@ export function MainLayout({ children }: LayoutProps) {
         <a>Works</a>
       </Link>
 
-      <Box flexGrow={1}>{children}</Box>
+      <Box flexGrow={1}>
+        <Container maxWidth="sm" sx={{ bgcolor: "primary.main" }}>
+          SM CONTAINER
+        </Container>
+        <Container sx={{ bgcolor: "primary.main" }}>
+          MD CONTAINER
+        </Container>
+        {children}
+      </Box>
 
       <Footer />
     </Stack>
