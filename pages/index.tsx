@@ -1,3 +1,4 @@
+import { FeatureWork } from "@/components/home/feature-work";
 import { Box } from "@mui/system";
 import { HeroSection } from "../components/home/hero";
 import { RecentPosts } from "../components/home/recent-posts";
@@ -9,6 +10,7 @@ const Home: NextPageWithLayout = () => {
     <Box>
       <HeroSection />
       <RecentPosts />
+      <FeatureWork />
     </Box>
   );
 };
