@@ -15,7 +15,8 @@ export function FeatureWork() {
       shortDescription:
         "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus. Donec sollicitudin molestie malesuada.",
       fullDescription: "",
-      imageUrl: "",
+      imageUrl:
+        "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota2_social.jpg",
     },
     {
       id: "2",
@@ -26,7 +27,8 @@ export function FeatureWork() {
       shortDescription:
         "Pellentesque in ipsum id orci porta dapibus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.",
       fullDescription: "",
-      imageUrl: "",
+      imageUrl:
+        "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota2_social.jpg",
     },
     {
       id: "3",
@@ -37,16 +39,17 @@ export function FeatureWork() {
       shortDescription:
         "Pellentesque in ipsum id orci porta dapibus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.",
       fullDescription: "",
-      imageUrl: "",
+      imageUrl:
+        "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota2_social.jpg",
     },
   ];
 
   return (
     <Box component="section" pt={2} pb={4}>
       <Container>
-        <Typography variant="h5">Feater Works</Typography>
+        <Typography variant="h5" mb={4}>Feater Works</Typography>
 
-        <WorkList workList={workList}/>
+        <WorkList workList={workList} />
       </Container>
     </Box>
   );

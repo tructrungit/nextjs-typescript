@@ -1,74 +1,88 @@
-import { createTheme, responsiveFontSizes  } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
 
 // Create a theme instance.
 export let theme = createTheme({
   typography: {
-    fontFamily: [
-      'Heebo',
-      'sans-serif',
-    ].join(','),
+    fontFamily: ["Heebo", "sans-serif"].join(","),
   },
   palette: {
     primary: {
       main: "#FF6464",
     },
     secondary: {
-      light: '#EDF7FA',
+      light: "#EDF7FA",
       main: "#00A8CC",
     },
     error: {
       main: red.A400,
     },
     text: {
-      primary: '#21243D'
-    }
+      primary: "#21243D",
+    },
   },
   components: {
     MuiContainer: {
       styleOverrides: {
         maxWidthSm: {
-          maxWidth: '680px',
-          '@media (min-width: 600px)': {
-            maxWidth: '680px'
-          }
+          maxWidth: "680px",
+          "@media (min-width: 600px)": {
+            maxWidth: "680px",
+          },
         },
         maxWidthMd: {
-          maxWidth: '860px',
-          '@media (min-width: 900px)': {
-            maxWidth: '860px'
-          }
-        }
+          maxWidth: "860px",
+          "@media (min-width: 900px)": {
+            maxWidth: "860px",
+          },
+        },
       },
       defaultProps: {
-        maxWidth: 'md'
+        maxWidth: "md",
       },
     },
     MuiLink: {
       defaultProps: {
-        underline: 'hover'
+        underline: "hover",
       },
       styleOverrides: {
         root: {
-          color: 'black',
+          color: "black",
 
-          '&:hover, &.active': {
-            color: '#FF6464'
-          }
-        }
-      }
+          "&:hover, &.active": {
+            color: "#FF6464",
+          },
+        },
+      },
     },
     MuiButton: {
       variants: [
         {
-          props: { variant: 'contained', color: 'primary'},
+          props: { variant: "contained", color: "primary" },
           style: {
-            color: 'white'
-          }
-        }
-      ]
-    }
-  }
+            color: "white",
+          },
+        },
+      ],
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          paddingInline: 2
+        },
+      },
+      variants: [
+        {
+          props: { color: "secondary" },
+          style: {
+            fontWeight: "bold",
+            backgroundColor: "#142850",
+            color: "white",
+          },
+        },
+      ],
+    },
+  },
 });
 
 theme = responsiveFontSizes(theme);
